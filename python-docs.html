@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Field Notes</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg: #0d1117;
+    --panel: #11181f;
+    --accent: #7ee787;
+    --accent-dim: #3fb950;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --code-bg: #161b22;
+    --border: #21262d;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    line-height: 1.65;
+  }
+
+  /* ---------- Navbar ---------- */
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+  }
+
+  #navbar header {
+    padding: 0 24px 20px 24px;
+    font-size: 1.2rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+
+  #navbar header::before {
+    content: "$ ";
+    color: var(--muted);
+  }
+
+  .nav-link {
+    display: block;
+    padding: 10px 24px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+    background: rgba(126, 231, 135, 0.06);
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ---------- Main content ---------- */
+  #main-doc {
+    margin-left: 260px;
+    padding: 40px 60px 80px 60px;
+    max-width: 780px;
+  }
+
+  .main-section {
+    margin-bottom: 64px;
+    scroll-margin-top: 24px;
+  }
+
+  .main-section header {
+    font-size: 1.7rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .main-section p {
+    margin: 0 0 16px 0;
+    color: var(--text);
+  }
+
+  .main-section ul {
+    margin: 0 0 16px 0;
+    padding-left: 22px;
+  }
+
+  .main-section li {
+    margin-bottom: 6px;
+  }
+
+  code {
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.92rem;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-dim);
+    border-radius: 6px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 0 0 16px 0;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #d2f8d2;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    #navbar {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #main-doc {
+      margin-left: 0;
+      padding: 30px 20px 60px 20px;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 8px 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <header>python_notes</header>
+    <a class="nav-link" href="#Introduction">Introduction</a>
+    <a class="nav-link" href="#Installation">Installation</a>
+    <a class="nav-link" href="#Variables_and_Data_Types">Variables and Data Types</a>
+    <a class="nav-link" href="#Control_Flow">Control Flow</a>
+    <a class="nav-link" href="#Functions">Functions</a>
+    <a class="nav-link" href="#Lists_and_Dictionaries">Lists and Dictionaries</a>
+    <a class="nav-link" href="#Error_Handling">Error Handling</a>
+  </nav>
+
+  <main id="main-doc">
+
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>Python is a high-level, interpreted programming language known for its readable syntax and gentle learning curve. It's widely used for web development, data analysis, automation, and scientific computing.</p>
+      <p>Unlike many languages that rely on curly braces, Python uses indentation to define blocks of code. This forces a consistent, clean style across every codebase you'll encounter.</p>
+      <p>These notes cover the core building blocks: variables, control flow, functions, and the data structures you'll reach for most often.</p>
+    </section>
+
+    <section class="main-section" id="Installation">
+      <header>Installation</header>
+      <p>Most operating systems ship with some version of Python already installed. You can check which version is available by opening a terminal and running:</p>
+      <pre><code>python3 --version</code></pre>
+      <p>If Python isn't installed, download it from the official site and follow the installer for your platform. On Debian-based Linux systems, you can also install it directly from the package manager:</p>
+      <pre><code>sudo apt install python3</code></pre>
+      <ul>
+        <li>Windows: use the official installer and check "Add to PATH"</li>
+        <li>macOS: comes pre-installed, or use Homebrew</li>
+        <li>Linux: usually available through your package manager</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="Variables_and_Data_Types">
+      <header>Variables and Data Types</header>
+      <p>Variables in Python don't require an explicit type declaration. The interpreter figures out the type based on the value assigned:</p>
+      <pre><code>name = "Ada"
+age = 36
+height = 1.68
+is_programmer = True</code></pre>
+      <p>The most common built-in types you'll work with are:</p>
+      <ul>
+        <li><code>str</code> — text data</li>
+        <li><code>int</code> and <code>float</code> — numeric data</li>
+        <li><code>bool</code> — True or False values</li>
+        <li><code>list</code>, <code>tuple</code>, <code>dict</code>, and <code>set</code> — collections</li>
+      </ul>
+      <p>You can check a variable's type at any point using the built-in <code>type()</code> function.</p>
+    </section>
+
+    <section class="main-section" id="Control_Flow">
+      <header>Control Flow</header>
+      <p>Conditional statements let your program make decisions. Python uses <code>if</code>, <code>elif</code>, and <code>else</code> to branch logic:</p>
+      <pre><code>if age >= 18:
+    print("Adult")
+elif age >= 13:
+    print("Teenager")
+else:
+    print("Child")</code></pre>
+      <p>Loops let you repeat actions. The two most common are <code>for</code> loops, which iterate over a sequence, and <code>while</code> loops, which repeat as long as a condition holds true.</p>
+      <pre><code>for i in range(5):
+    print(i)</code></pre>
+    </section>
+
+    <section class="main-section" id="Functions">
+      <header>Functions</header>
+      <p>Functions let you package reusable logic behind a name. Define one with the <code>def</code> keyword:</p>
+      <pre><code>def greet(name):
+    return f"Hello, {name}!"</code></pre>
+      <p>Functions can take default arguments, accept a variable number of parameters, and return multiple values packed into a tuple.</p>
+      <pre><code>def add(a, b=10):
+    return a + b</code></pre>
+      <p>Keeping functions small and focused on a single task makes your code easier to test and reuse.</p>
+    </section>
+
+    <section class="main-section" id="Lists_and_Dictionaries">
+      <header>Lists and Dictionaries</header>
+      <p>A <code>list</code> is an ordered, mutable collection of items. You can add, remove, and access elements by index:</p>
+      <pre><code>fruits = ["apple", "banana", "cherry"]
+fruits.append("date")</code></pre>
+      <p>A <code>dict</code> stores data as key-value pairs, which is useful when you need to look things up by name rather than position:</p>
+      <pre><code>person = {"name": "Ada", "age": 36}</code></pre>
+      <ul>
+        <li>Use <code>list</code> when order matters</li>
+        <li>Use <code>dict</code> when you need fast lookups by key</li>
+        <li>Use <code>set</code> when you only care about unique values</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="Error_Handling">
+      <header>Error Handling</header>
+      <p>When something goes wrong, Python raises an exception. You can catch these using a <code>try</code>/<code>except</code> block so your program doesn't crash outright:</p>
+      <pre><code>try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Can't divide by zero")</code></pre>
+      <p>You can also use <code>finally</code> to run cleanup code regardless of whether an exception occurred, which is handy for closing files or network connections.</p>
+      <p>Catching overly broad exceptions can hide real bugs, so it's best to catch specific exception types whenever possible.</p>
+    </section>
+
+  </main>
+
+</body>
+</html>
