@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesa de Cartas</title>
+<style>
+  :root {
+    --felt-dark: #0b3d2e;
+    --felt-light: #145c43;
+    --gold: #d4af37;
+    --card-bg: #fdfaf3;
+    --ink: #1a1a1a;
+    --red: #b3261e;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, var(--felt-light), var(--felt-dark) 70%);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    padding: 60px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+  }
+
+  #playing-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 160px;
+    height: 230px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 2px rgba(212, 175, 55, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow:
+      0 18px 35px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 2px var(--gold);
+  }
+
+  .card.red .rank,
+  .card.red .center-symbol,
+  .card.red .suit-corner {
+    color: var(--red);
+  }
+
+  .card.black .rank,
+  .card.black .center-symbol,
+  .card.black .suit-corner {
+    color: var(--ink);
+  }
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .left {
+    align-self: flex-start;
+  }
+
+  .right {
+    align-self: flex-end;
+    transform: rotate(180deg);
+  }
+
+  .rank {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  .suit-corner {
+    font-size: 1.1rem;
+  }
+
+  .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex-grow: 1;
+  }
+
+  .center-symbol {
+    font-size: 3.2rem;
+  }
+
+  .card-name {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Mesa de Cartas</h1>
+
+  <main id="playing-cards">
+
+    <div class="card black">
+      <div class="left">
+        <span class="rank">A</span>
+        <span class="suit-corner">♠</span>
+      </div>
+      <div class="middle">
+        <span class="center-symbol">♠</span>
+        <span class="card-name">As de Picas</span>
+      </div>
+      <div class="right">
+        <span class="rank">A</span>
+        <span class="suit-corner">♠</span>
+      </div>
+    </div>
+
+    <div class="card red">
+      <div class="left">
+        <span class="rank">K</span>
+        <span class="suit-corner">♥</span>
+      </div>
+      <div class="middle">
+        <span class="center-symbol">♥</span>
+        <span class="card-name">Rey de Corazones</span>
+      </div>
+      <div class="right">
+        <span class="rank">K</span>
+        <span class="suit-corner">♥</span>
+      </div>
+    </div>
+
+    <div class="card black">
+      <div class="left">
+        <span class="rank">Q</span>
+        <span class="suit-corner">♣</span>
+      </div>
+      <div class="middle">
+        <span class="center-symbol">♣</span>
+        <span class="card-name">Reina de Tréboles</span>
+      </div>
+      <div class="right">
+        <span class="rank">Q</span>
+        <span class="suit-corner">♣</span>
+      </div>
+    </div>
+
+    <div class="card red">
+      <div class="left">
+        <span class="rank">J</span>
+        <span class="suit-corner">♦</span>
+      </div>
+      <div class="middle">
+        <span class="center-symbol">♦</span>
+        <span class="card-name">Jota de Diamantes</span>
+      </div>
+      <div class="right">
+        <span class="rank">J</span>
+        <span class="suit-corner">♦</span>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
