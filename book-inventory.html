@@ -66,15 +66,15 @@
   }
 
   /* Background gradient for each row based on reading status */
-  [class="read"] {
+  tr[class="read"] {
     background-image: linear-gradient(120deg, #eaf6ea, #cfe9cf);
   }
 
-  [class="to-read"] {
+  tr[class="to-read"] {
     background-image: linear-gradient(120deg, #fdf3e3, #f8e2b3);
   }
 
-  [class="in-progress"] {
+  tr[class="in-progress"] {
     background-image: linear-gradient(120deg, #e6f0fb, #c4dcf6);
   }
 
@@ -94,19 +94,19 @@
     line-height: 14px;
   }
 
-  [class="to-read"] span[class="status"] {
+  tr[class="to-read"] span[class="status"] {
     border: 2px solid #c68a1f;
     background-image: linear-gradient(135deg, #ffe6a1, #f2b53c);
     color: #5c3d00;
   }
 
-  [class="read"] span[class="status"] {
+  tr[class="read"] span[class="status"] {
     border: 2px solid #4c8c4a;
     background-image: linear-gradient(135deg, #b7e4b4, #6fbf6a);
     color: #1e3d1c;
   }
 
-  [class="in-progress"] span[class="status"] {
+  tr[class="in-progress"] span[class="status"] {
     border: 2px solid #3a72b8;
     background-image: linear-gradient(135deg, #b7d4f2, #6ea8dd);
     color: #123456;
