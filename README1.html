@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta de viajeros</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #2b2a26;
+    --paper: #f6f1e7;
+    --card: #fffdf8;
+    --line: #d8cfb8;
+    --compass: #a3512c;
+    --compass-dark: #7c3b1e;
+    --stamp: #4c6b52;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 48px 20px 80px;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 10% 15%, rgba(163,81,44,0.06), transparent 40%),
+      radial-gradient(circle at 90% 85%, rgba(76,107,82,0.07), transparent 40%);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  .sheet {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--compass);
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+
+  h1#title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+
+  p#description {
+    font-size: 16px;
+    color: #5b574c;
+    max-width: 50ch;
+    margin: 0 0 36px;
+  }
+
+  form#survey-form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 36px;
+    position: relative;
+  }
+
+  form#survey-form::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px dashed var(--line);
+    pointer-events: none;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+
+  legend {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--compass-dark);
+    padding: 0 0 10px;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 16px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: #fffefb;
+    color: var(--ink);
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--compass);
+    box-shadow: 0 0 0 3px rgba(163,81,44,0.12);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .row .field { flex: 1; }
+
+  .choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .choice-group.inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .choice-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .choice-item input {
+    accent-color: var(--compass);
+    width: 16px;
+    height: 16px;
+  }
+
+  button#submit {
+    display: inline-block;
+    background: var(--compass);
+    color: #fff8ef;
+    border: none;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 13px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+
+  button#submit:hover {
+    background: var(--compass-dark);
+  }
+
+  .stamp {
+    margin-top: 22px;
+    font-size: 12px;
+    color: var(--stamp);
+  }
+
+  @media (max-width: 480px) {
+    .row { flex-direction: column; }
+    form#survey-form { padding: 24px; }
+    h1#title { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <p class="eyebrow">Cuaderno de viaje</p>
+    <h1 id="title">Encuesta para viajeros</h1>
+    <p id="description">Cuéntanos cómo viajas para que podamos diseñar rutas y guías que se ajusten a tu forma de explorar el mundo. Toma menos de dos minutos.</p>
+
+    <form id="survey-form">
+      <fieldset>
+        <legend>Sobre ti</legend>
+        <div class="row">
+          <div class="field">
+            <label id="name-label" for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="field">
+            <label id="email-label" for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="nombre@correo.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label id="number-label" for="number">Edad</label>
+          <input type="number" id="number" name="number" placeholder="Ej: 29" min="10" max="110">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tus hábitos de viaje</legend>
+        <div class="field">
+          <label for="dropdown">¿Con qué frecuencia viajas?</label>
+          <select id="dropdown" name="frequency">
+            <option value="" disabled selected>Elige una opción</option>
+            <option value="rara-vez">Rara vez, una vez al año o menos</option>
+            <option value="ocasional">Un par de veces al año</option>
+            <option value="frecuente">Cada mes o casi</option>
+            <option value="nomada">Vivo viajando</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>¿Qué tipo de viajero eres?</label>
+          <div class="choice-group">
+            <label class="choice-item">
+              <input type="radio" name="traveler-type" value="mochilero"> Mochilero, con presupuesto ajustado
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="traveler-type" value="comodidad"> Busco comodidad ante todo
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="traveler-type" value="aventura"> Aventura y naturaleza
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Qué te interesa cuando viajas? (elige todas las que apliquen)</label>
+          <div class="choice-group inline">
+            <label class="choice-item">
+              <input type="checkbox" name="interests" value="gastronomia"> Gastronomía local
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="interests" value="historia"> Historia y museos
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="interests" value="naturaleza"> Naturaleza
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="interests" value="vida-nocturna"> Vida nocturna
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="comments">Comentarios adicionales</label>
+          <textarea id="comments" name="comments" placeholder="Cuéntanos algo más sobre tus viajes..."></textarea>
+        </div>
+      </fieldset>
+
+      <button id="submit" type="submit">Enviar encuesta</button>
+      <p class="stamp">Tus respuestas nos ayudan a planear mejores rutas.</p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('survey-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('¡Gracias por completar la encuesta!');
+    });
+  </script>
+</body>
+</html>
