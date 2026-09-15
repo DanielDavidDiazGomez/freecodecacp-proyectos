@@ -1,0 +1,52 @@
+Aquí tienes la recopilación completa, ordenada y detallada de absolutamente todos los conceptos, elementos, atributos y reglas evaluados durante la sesión:
+1. Elementos y Estructura HTML
+ * Etiqueta <center>: Elemento obsoleto (deprecated) usado antiguamente para centrar contenido. En HTML5 está desaconsejado y la alineación se debe gestionar con CSS (ej. text-align: center;, Flexbox o Grid).
+ * Etiqueta <html>: Nodo raíz obligatorio de cualquier documento HTML que engloba a todo el resto de los elementos (como <head> y <body>).
+ * Etiqueta <header>: Elemento semántico de HTML5 para estructurar zonas de cabecera en una página o dentro de una sección específica.
+ * Rutas de archivos (Absoluta vs. Relativa):
+   * Absoluta: Define la ubicación exacta y completa en el sistema o servidor (ej. /Users/usuario/proyecto/index.html o [https://sitio.com/imagen.jpg](https://sitio.com/imagen.jpg)).
+   * Relativa: Define la ruta en relación con la ubicación del archivo actual (ej. ./imagenes/foto.jpg o ../contacto.html).
+2. Semántica de Texto y Citas
+ * Etiqueta <i>: Representa texto que difiere del tono normal del escrito, como términos técnicos, palabras en otro idioma, modismos o pensamientos.
+ * Etiqueta <b>: Se utiliza para resaltar texto y llamar la atención visual sin añadir una importancia especial o énfasis al significado.
+ * Etiqueta <strong>: Representa texto de gran importancia, urgencia o gravedad (strong importance). Por defecto se muestra en negrita.
+ * Etiqueta <abbr>: Define una abreviatura o un acrónimo (ej. "HTML"). Se combina con el atributo title para desplegar la definición completa al pasar el cursor sobre la palabra.
+ * Etiqueta <q>: Define citas breves en línea (inline quotes).
+ * Etiqueta <blockquote>: Define bloques de cita extensos.
+ * Etiquetas <s> y <del>: Representan contenido que ya no es preciso, relevante o que ha sido eliminado del documento.
+ * Etiqueta <mark>: Utilizada para resaltar o marcar texto por su relevancia contextual (como los resultados de una búsqueda).
+ * Etiqueta <span>: Contenedor genérico en línea (inline) sin significado semántico intrínseco.
+ * Etiqueta <article>: Representa contenido autocontenido e independiente dentro de una página.
+ * Etiqueta <address>: Especifica la información de contacto del autor o propietario del documento o sección.
+3. Formularios e Inputs
+ * Tipos válidos de <input>:
+   * type="password": Oculta los caracteres ingresados por motivos de seguridad.
+   * type="email": Agrega validación de formato de correo electrónico nativa del navegador.
+   * type="radio": Crea botones de selección única entre un grupo de opciones.
+ * Atributo list vs. Tipo list: list no es un tipo de input (<input type="list"> no existe). Es un atributo que permite vincular un input con un conjunto de opciones sugeridas definidas en un elemento <datalist>.
+ * Atributo action: Especifica la URL o ruta del servidor a la que se envían los datos del formulario tras su procesamiento.
+ * Atributo placeholder: Muestra una pista o sugerencia dentro de un campo de texto que desaparece automáticamente al empezar a escribir.
+ * Atributo value: Establece el valor actual o por defecto de un control de formulario que se enviará al servidor.
+ * Atributo size: Define el ancho visible de un <input> medido en número de caracteres, no en píxeles.
+ * Atributo required: Atributo booleano que obliga al usuario a completar el campo antes de enviar el formulario.
+ * Atributos minlength / maxlength: Controlan la cantidad mínima y máxima de caracteres permitidos.
+ * Valores del atributo type en <button>:
+   * submit: Envía los datos del formulario (valor por defecto).
+   * reset: Restablece todos los campos del formulario a sus valores originales.
+   * button: Botón genérico sin comportamiento por defecto, ideal para interacciones con JavaScript.
+ * Agrupación en formularios:
+   * <fieldset>: Contenedor para agrupar campos de formulario conceptualmente relacionados.
+   * <legend>: Etiqueta obligatoria como primer hijo dentro de <fieldset> para darle un título descriptivo al grupo.
+ * Etiqueta <caption>: Sirve para colocar un título a una tabla (<table>), no debe confundirse con la descripción de un grupo de formulario.
+4. Multimedia y Metadatos
+ * Atributo controls: Habilita la interfaz de reproducción predeterminada del navegador (reproducir, pausar, control de volumen) en los elementos <audio> y <video>.
+ * Meta Viewport: La etiqueta <meta name="viewport" content="width=device-width, initial-scale=1.0"> controla las dimensiones de visualización y el nivel de escalado en dispositivos móviles.
+   * width=device-width: Iguala el ancho de la página al ancho de la pantalla del dispositivo.
+   * initial-scale=1.0: Define el zoom inicial al cargar la página.
+ * Meta Description: <meta name="description" content="..."> proporciona un resumen del contenido del sitio utilizado principalmente para el posicionamiento SEO.
+5. Propiedades de CSS (Box Model)
+ * Propiedad Abreviada margin:
+   * 1 valor (ej. margin: 10px;): Aplica a los 4 lados (Top, Right, Bottom, Left).
+   * 2 valores (ej. margin: 10px 0;): El primer valor controla los lados verticales (Top / Bottom) y el segundo valor controla los lados horizontales (Left / Right).
+   * 3 valores (ej. margin: 10px 5px 0;): Representan Top, Left/Right y Bottom respectivamente.
+   * 4 valores (ej. margin: 10px 5px 2px 0;): Siguen las agujas del reloj: Top, Right, Bottom, Left.
