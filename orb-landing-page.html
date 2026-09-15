@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORB — The speaker that listens less, and hears more.</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg: #0e0e12;
+    --panel: #17171d;
+    --accent: #ff6b4a;
+    --accent-soft: #ffb199;
+    --text: #f2f0ea;
+    --muted: #9a9aa5;
+    --border: #26262e;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  section {
+    padding: 100px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  /* ---------- Header / Navbar ---------- */
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(14, 14, 18, 0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+  }
+
+  #header-img {
+    height: 32px;
+  }
+
+  #nav-bar {
+    display: flex;
+    gap: 30px;
+  }
+
+  .nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-soft);
+  }
+
+  /* ---------- Hero ---------- */
+  #hero {
+    padding-top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  #hero h1 {
+    font-size: 3.2rem;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  #hero p {
+    color: var(--muted);
+    max-width: 500px;
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    background: var(--accent);
+    color: #1a1a1a;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ---------- Features ---------- */
+  #features .feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    flex: 1 1 250px;
+  }
+
+  .feature-card h3 {
+    color: var(--accent-soft);
+    margin-top: 0;
+  }
+
+  .feature-card p {
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  /* ---------- Video ---------- */
+  #video-section {
+    text-align: center;
+  }
+
+  #video {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 14px;
+    margin-top: 24px;
+  }
+
+  /* ---------- Pricing ---------- */
+  #pricing .price-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .price-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    flex: 1 1 220px;
+    text-align: center;
+  }
+
+  .price-card .amount {
+    font-size: 2.2rem;
+    color: var(--accent);
+    font-weight: bold;
+    margin: 12px 0;
+  }
+
+  /* ---------- Signup form ---------- */
+  #signup {
+    text-align: center;
+  }
+
+  #form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  #email {
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    font-size: 1rem;
+    min-width: 260px;
+  }
+
+  #submit {
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  /* ---------- Footer ---------- */
+  #footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    #header {
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px;
+    }
+
+    #nav-bar {
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #hero {
+      padding-top: 220px;
+      align-items: center;
+      text-align: center;
+    }
+
+    #hero h1 {
+      font-size: 2.2rem;
+    }
+
+    #email {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header id="header">
+    <img id="header-img" src="https://placehold.co/120x36/0e0e12/ff6b4a?text=ORB&font=roboto" alt="ORB logo">
+    <nav id="nav-bar">
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#video-section">Demo</a>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#signup">Get One</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <span class="eyebrow">Introducing ORB</span>
+    <h1>The speaker that listens less, and hears more.</h1>
+    <p>ORB is a compact smart speaker built around one idea: your room should sound like a room, not a gadget. Warm, spatial audio with a single tap to control everything.</p>
+    <a class="cta-button" href="#signup">Reserve yours</a>
+  </section>
+
+  <section id="features">
+    <span class="eyebrow">Why ORB</span>
+    <h2>Built to disappear into your space</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>360° Sound</h3>
+        <p>Six drivers fire outward in every direction, filling the whole room evenly instead of aiming at one spot on your couch.</p>
+      </div>
+      <div class="feature-card">
+        <h3>One Dial, No Apps</h3>
+        <p>Volume, skip, and pause all live on a single brushed-aluminum dial on top. No screen, no app required to get started.</p>
+      </div>
+      <div class="feature-card">
+        <h3>All-Day Battery</h3>
+        <p>A single charge lasts through a full day of casual listening, and tops back up in under two hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="video-section">
+    <span class="eyebrow">See it in action</span>
+    <h2>A two-minute look at ORB</h2>
+    <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="ORB product demo" allowfullscreen></iframe>
+  </section>
+
+  <section id="pricing">
+    <span class="eyebrow">Pricing</span>
+    <h2>Pick the setup that fits your space</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Single</h3>
+        <div class="amount">$129</div>
+        <p>One ORB speaker, perfect for a bedroom or home office.</p>
+      </div>
+      <div class="price-card">
+        <h3>Pair</h3>
+        <div class="amount">$229</div>
+        <p>Two ORBs, wirelessly linked for stereo sound across a larger room.</p>
+      </div>
+      <div class="price-card">
+        <h3>Whole Home</h3>
+        <div class="amount">$449</div>
+        <p>Four ORBs plus the charging dock, enough to cover an entire apartment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <span class="eyebrow">Stay in the loop</span>
+    <h2>Get notified when ORB ships</h2>
+    <form id="form" action="https://www.freecodecamp.org/email-submit" method="post">
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      <input type="submit" id="submit" value="Notify me">
+    </form>
+  </section>
+
+  <footer id="footer">
+    <p>&copy; 2026 ORB Audio. This is a demo landing page built for a coding lab, not a real product.</p>
+  </footer>
+
+</body>
+</html>
